@@ -3,8 +3,10 @@
 <%= render @dotfile %>
 
 <div>
-  <%= link_to "Edit this dotfile", edit_dotfile_path(@dotfile) %> |
-  <%= link_to "Back to dotfiles", dotfiles_path %>
+  <% if @dotfile.user == current_user %>
+    <%= link_to "Edit this dotfile", edit_dotfile_path(@dotfile) %>
+    <%= button_to "Destroy this dotfile", @dotfile, method: :delete %>
+  <% end %>
 
-  <%= button_to "Destroy this dotfile", @dotfile, method: :delete %>
+    <%= link_to "Back to dotfiles", dotfiles_path %>
 </div>

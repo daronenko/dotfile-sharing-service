@@ -1,5 +1,7 @@
 class DotfilesController < ApplicationController
   before_action :set_dotfile, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /dotfiles or /dotfiles.json
   def index
@@ -12,7 +14,7 @@ class DotfilesController < ApplicationController
 
   # GET /dotfiles/new
   def new
-    @dotfile = Dotfile.new
+    @dotfile = current_user.dotfiles.build
   end
 
   # GET /dotfiles/1/edit
@@ -21,7 +23,7 @@ class DotfilesController < ApplicationController
 
   # POST /dotfiles or /dotfiles.json
   def create
-    @dotfile = Dotfile.new(dotfile_params)
+    @dotfile = current_user.dotfiles.build(dotfile_params)
 
     respond_to do |format|
       if @dotfile.save
@@ -55,6 +57,11 @@ class DotfilesController < ApplicationController
       format.html { redirect_to dotfiles_url, notice: "Dotfile was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def correct_user
+    @dotfile = current_user.dotfiles.find_by(id: params[:id])
+    redirect_to dotfiles_path, notice: "Not Authorized To Edit This Friend" if @dotfile.nil?
   end
 
   private
