@@ -1,0 +1,39 @@
+<%= form_with(model: dotfile) do |form| %>
+  <% if dotfile.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(dotfile.errors.count, "error") %> prohibited this dotfile from being saved:</h2>
+
+      <ul>
+        <% dotfile.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :config_type, style: "display: block" %>
+    <%= form.text_field :config_type %>
+  </div>
+
+  <div>
+    <%= form.label :file, style: "display: block" %>
+    <%= form.file_field :file %>
+  </div>
+
+  <br>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Dotfiles</h1>
+
+<div id="dotfiles">
+  <% @dotfiles.each do |dotfile| %>
+    <%= render dotfile %>
+    <p>
+      <%= link_to "Show this dotfile", dotfile %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New dotfile", new_dotfile_path %>

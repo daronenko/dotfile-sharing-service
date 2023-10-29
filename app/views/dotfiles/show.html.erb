@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @dotfile %>
+
+<div>
+  <%= link_to "Edit this dotfile", edit_dotfile_path(@dotfile) %> |
+  <%= link_to "Back to dotfiles", dotfiles_path %>
+
+  <%= button_to "Destroy this dotfile", @dotfile, method: :delete %>
+</div>
