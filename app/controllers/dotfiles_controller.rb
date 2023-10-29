@@ -65,6 +65,6 @@ class DotfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def dotfile_params
-      params.require(:dotfile).permit(:title, :description, :config_type, :file)
+      params.require(:dotfile).permit(:title, :description, :config_type, :file, :user_id)
     end
 end

@@ -31,6 +31,10 @@
     <%= form.file_field :file %>
   </div>
 
+  <div>
+    <%= form.number_field :user_id, id: :dotfile_user_id, value: current_user.id, type: :hidden %>
+  </div>
+
   <br>
 
   <div>
