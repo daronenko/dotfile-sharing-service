@@ -23,7 +23,13 @@
 
   <div>
     <%= form.label :config_type, style: "display: block" %>
-    <%= form.text_field :config_type %>
+    <%= form.select :config_type, options_for_select([
+      ["", ""],
+      "tmux",
+      "nvim",
+      "fish",
+      "nginx",
+    ]), {}, {class: "form-select form-select-sm"} %>
   </div>
 
   <div>
