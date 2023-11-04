@@ -10,7 +10,9 @@ class DotfilesController < ApplicationController
     search_params = params.permit(:format, :page, q: [:title_or_description_or_config_type_or_user_username_cont])
     @q = Dotfile.ransack(search_params[:q])
     dotfiles = @q.result(distinct: true).order(created_at: :asc)
-    @pagy, @dotfiles = pagy_countless(dotfiles, items: 2)
+    @pagy, @dotfiles = pagy(dotfiles, items: 10)
+  rescue Pagy::OverflowError
+    redirect_to dotfiles_path(page: 1)
   end
 
   # GET /dotfiles/1 or /dotfiles/1.json
