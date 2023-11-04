@@ -8,15 +8,10 @@
     oninput: 'this.form.requestSubmit()', autofocus: true, autocomplete: 'off' %>
 <% end %>
 
-<%= turbo_frame_tag :results do %>
-  <div id="dotfiles">
-    <% @dotfiles.each do |dotfile| %>
-      <%= render dotfile %>
-      <p>
-        <%= link_to "Show this dotfile", dotfile %>
-      </p>
-    <% end %>
-  </div>
+<%= turbo_frame_tag :results, data: { turbo_action: 'advance' } do %>
+  <div id="dotfiles"></div>
+  <%= turbo_frame_tag :pagination, loading: :lazy,
+    src: dotfiles_path(format: :turbo_stream, q: params[:q]&.to_unsafe_h) %>
 <% end %>
 
 <%= link_to "New dotfile", new_dotfile_path %>

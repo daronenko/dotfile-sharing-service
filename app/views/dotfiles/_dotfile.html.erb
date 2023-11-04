@@ -6,17 +6,17 @@
 
   <p>
     <strong>Author:</strong>
-    <%= dotfile.user.username %>
+    <%= highlight(dotfile.user.username, params.dig(:q, :title_or_description_or_config_type_or_user_username_cont)) %>
   </p>
 
   <p>
     <strong>Description:</strong>
-    <%= dotfile.description %>
+    <%= highlight(dotfile.description, params.dig(:q, :title_or_description_or_config_type_or_user_username_cont)) %>
   </p>
 
   <p>
     <strong>Config type:</strong>
-    <%= dotfile.config_type %>
+    <%= highlight(dotfile.config_type, params.dig(:q, :title_or_description_or_config_type_or_user_username_cont)) %>
   </p>
 
   <p>

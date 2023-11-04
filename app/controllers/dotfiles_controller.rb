@@ -1,13 +1,16 @@
 class DotfilesController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_dotfile, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /dotfiles or /dotfiles.json
   def index
-    # @dotfiles = Dotfile.all
-    @q = Dotfile.ransack(params[:q])
-    @dotfiles = @q.result(distinct: true).order(created_at: :asc)
+    search_params = params.permit(:format, :page, q: [:title_or_description_or_config_type_or_user_username_cont])
+    @q = Dotfile.ransack(search_params[:q])
+    dotfiles = @q.result(distinct: true).order(created_at: :asc)
+    @pagy, @dotfiles = pagy_countless(dotfiles, items: 2)
   end
 
   # GET /dotfiles/1 or /dotfiles/1.json
