@@ -2,13 +2,21 @@
 
 <h1>Dotfiles</h1>
 
-<div id="dotfiles">
-  <% @dotfiles.each do |dotfile| %>
-    <%= render dotfile %>
-    <p>
-      <%= link_to "Show this dotfile", dotfile %>
-    </p>
-  <% end %>
-</div>
+<%= search_form_for @q, data: { turbo_frame: :results } do |f| %>
+  <%= f.label :title_or_description_or_config_type_or_user_username_cont %>
+  <%= f.search_field :title_or_description_or_config_type_or_user_username_cont,
+    oninput: 'this.form.requestSubmit()', autofocus: true, autocomplete: 'off' %>
+<% end %>
+
+<%= turbo_frame_tag :results do %>
+  <div id="dotfiles">
+    <% @dotfiles.each do |dotfile| %>
+      <%= render dotfile %>
+      <p>
+        <%= link_to "Show this dotfile", dotfile %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
 
 <%= link_to "New dotfile", new_dotfile_path %>

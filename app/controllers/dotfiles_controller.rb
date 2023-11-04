@@ -5,7 +5,9 @@ class DotfilesController < ApplicationController
 
   # GET /dotfiles or /dotfiles.json
   def index
-    @dotfiles = Dotfile.all
+    # @dotfiles = Dotfile.all
+    @q = Dotfile.ransack(params[:q])
+    @dotfiles = @q.result(distinct: true).order(created_at: :asc)
   end
 
   # GET /dotfiles/1 or /dotfiles/1.json
@@ -63,7 +65,7 @@ class DotfilesController < ApplicationController
     @dotfile = current_user.dotfiles.find_by(id: params[:id])
     redirect_to dotfiles_path, notice: "Not Authorized To Edit This Friend" if @dotfile.nil?
   end
-
+ 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dotfile
