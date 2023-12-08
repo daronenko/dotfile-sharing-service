@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   attr_accessor :login
 
+  acts_as_voter
+
   def login
     @login || self.username || self.email
   end

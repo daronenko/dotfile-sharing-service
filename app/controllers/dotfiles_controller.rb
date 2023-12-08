@@ -1,7 +1,7 @@
 class DotfilesController < ApplicationController
   include Pagy::Backend
 
-  before_action :set_dotfile, only: %i[ show edit update destroy ]
+  before_action :set_dotfile, only: %i[ show edit update destroy vote bookmark ]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -9,11 +9,43 @@ class DotfilesController < ApplicationController
   def index
     search_params = params.permit(:format, :page, q: [:title_or_description_or_config_type_or_user_username_cont])
     @q = Dotfile.ransack(search_params[:q])
-    dotfiles = @q.result(distinct: true).order(created_at: :asc)
+    # dotfiles = @q.result(distinct: true).order(created_at: :asc)  # TODO:add sorting option 
+    dotfiles = @q.result(distinct: true).order(cached_weighted_like_score: :desc)
     @pagy, @dotfiles = pagy(dotfiles, items: 10)
   rescue Pagy::OverflowError
     redirect_to dotfiles_path(page: 1)
   end
+
+  def bookmark
+    @dotfile.bookmark!(current_user)
+    respond_to do |format|
+      format.html do
+        redirect_to @dotfile
+      end
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(@dotfile, partial: "dotfiles/dotfile", locals: {dotfile: @dotfile})
+      end
+    end
+  end
+
+  def vote
+    case params[:type]
+    when 'upvote'
+      @dotfile.upvote!(current_user)
+    when 'downvote'
+      @dotfile.downvote!(current_user)
+    else
+      return redirect_to request.url, alert: "no such vote type"
+    end
+    respond_to do |format|
+      format.html do
+        redirect_to @dotfile
+      end
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(@dotfile, partial: "dotfiles/dotfile", locals: {dotfile: @dotfile})
+      end
+    end
+  end 
 
   # GET /dotfiles/1 or /dotfiles/1.json
   def show

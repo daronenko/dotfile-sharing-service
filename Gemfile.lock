@@ -74,6 +74,7 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
+    acts_as_votable (0.14.0)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     base64 (0.1.1)
@@ -262,6 +263,7 @@ PLATFORMS
 
 DEPENDENCIES
   activestorage (~> 7.1, >= 7.1.1)
+  acts_as_votable (~> 0.14.0)
   bootsnap
   capybara
   debug

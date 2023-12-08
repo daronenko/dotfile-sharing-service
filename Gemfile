@@ -74,3 +74,5 @@ end
 gem "ransack", "~> 4.1"
 
 gem "pagy", "~> 6.1"
+
+gem "acts_as_votable", "~> 0.14.0"

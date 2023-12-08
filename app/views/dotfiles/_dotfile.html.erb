@@ -20,6 +20,16 @@
   </p>
 
   <p>
+    score: <%= dotfile.cached_weighted_like_score %>
+  </p>
+
+  <p>
+    <%= button_to upvote_label(dotfile, current_user), vote_dotfile_path(dotfile, type: :upvote), method: :patch, style: upvote_label_styles(dotfile, current_user) %>
+    <%= button_to downvote_label(dotfile, current_user), vote_dotfile_path(dotfile, type: :downvote), method: :patch, style: downvote_label_styles(dotfile, current_user) %>
+    <%= button_to bookmark_label(dotfile, current_user), bookmark_dotfile_path(dotfile), method: :patch, style: bookmark_label_styles(dotfile, current_user) %>
+  </p>
+
+  <p>
     <%= link_to 'View file', dotfile.file %>
   </p>
 </div>
