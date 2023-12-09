@@ -7,6 +7,9 @@
   <%= f.search_field :title_or_description_or_config_type_or_user_username_cont,
     autofocus: true, autocomplete: 'off' %>
 
+  <%= f.label :config_type_eq %>
+  <%= f.select :config_type_eq, Dotfile.pluck(:config_type).uniq, {include_blank: true}, style: "width: 200px;" %>
+
   <%= f.submit %>
 <% end %>
 
