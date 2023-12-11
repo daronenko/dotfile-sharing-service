@@ -1,35 +1,36 @@
-<div id="<%= dom_id dotfile %>">
-  <p>
-    <strong>Title:</strong>
-    <%= dotfile.title %>
-  </p>
+<div id="<%= dom_id dotfile %>" class="card">
+  <div class="card-header">
+    <div>
+      <div style="display: inline-block; width: 49.5%">
+        <%= link_to "#{dotfile.title}", dotfile, class: "text-decoration-none fw-bold fs-4" %> by @<%= dotfile.user.username %>
+      </div>
+      <div style="display: inline-block; text-align: right; width: 49.5%; color: grey">
+        <%= dotfile.config_type %>
+      </div>
+    </div>
+  </div>
 
-  <p>
-    <strong>Author:</strong>
-    <%= dotfile.user.username %>
-  </p>
+  <div class="card-body">
+    <p><%= dotfile.description %></p><br>
 
-  <p>
-    <strong>Description:</strong>
-    <%= dotfile.description %>
-  </p>
+    <div style="display: flex; flex-direction: row">
+      <%= button_to "", vote_dotfile_path(dotfile, type: :upvote, show_config: defined?(show_config) && show_config), method: :patch, style: upvote_label_styles(dotfile, current_user), class: "bi bi-arrow-up btn btn-sm btn-light me-1" %>
+      <%= dotfile.cached_weighted_like_score %>
+      <%= button_to "", vote_dotfile_path(dotfile, type: :downvote, show_config: defined?(show_config) && show_config), method: :patch, style: downvote_label_styles(dotfile, current_user), class: "bi bi-arrow-down btn btn-sm btn-light ms-1" %>
+      
+      <%= button_to "", bookmark_dotfile_path(dotfile, show_config: defined?(show_config) && show_config), method: :patch, style: bookmark_label_styles(dotfile, current_user), class: "bi bi-bookmark btn btn-sm btn-light ms-5" %>
+      <%= link_to "", dotfile.file, style: "float: right", class: "bi bi-download btn btn-sm btn-light ms-1" %>
+              
+      <% if dotfile.user == current_user %>
+        <%= link_to "", edit_dotfile_path(dotfile), class: "bi bi-pencil-square btn btn-sm btn-light ms-5" %>
+      <% end %>
+    </div>
 
-  <p>
-    <strong>Config type:</strong>
-    <%= dotfile.config_type %>
-  </p>
-
-  <p>
-    score: <%= dotfile.cached_weighted_like_score %>
-  </p>
-
-  <p>
-    <%= button_to upvote_label(dotfile, current_user), vote_dotfile_path(dotfile, type: :upvote), method: :patch, style: upvote_label_styles(dotfile, current_user) %>
-    <%= button_to downvote_label(dotfile, current_user), vote_dotfile_path(dotfile, type: :downvote), method: :patch, style: downvote_label_styles(dotfile, current_user) %>
-    <%= button_to bookmark_label(dotfile, current_user), bookmark_dotfile_path(dotfile), method: :patch, style: bookmark_label_styles(dotfile, current_user) %>
-  </p>
-
-  <p>
-    <%= link_to 'View file', dotfile.file %>
-  </p>
+    <% if defined?(show_config) && show_config %>
+      <br>
+      <pre class="prettyprint form-control" style="background-color: #f8f8f8; border: 1px solid #d3d3d3; padding: 10px; font-size: 14px"><code class="lang-sh" style=""><%= raw(dotfile.file.download) %></code></pre>
+    <% end %> 
+  </div>
 </div>
+
+

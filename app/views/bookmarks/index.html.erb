@@ -1,8 +1,8 @@
 <%= render 'layouts/header' %>
 <div class="container d-flex justify-content-center mt-5" style="width: 100%; weight: 100%">
   <div style="width: 70%">
-      <h1>Dotfiles</h1><br>
-
+      <h1>Bookmarks</h1><br>
+      
       <% if defined?(notice) && (not notice.nil?) %>
         <div class="alert alert-success" role="alert">
           <%= notice %>
@@ -18,7 +18,7 @@
               class: 'form-control',
               autofocus: true,
               autocomplete: 'off',
-              placeholder: 'Search for Dotfiles' %>
+              placeholder: 'Search for Bookmarks' %>
           </div>
 
           <div class="mt-3">
@@ -37,11 +37,13 @@
       </div>
 
       <br>
-
+      
       <div id="dotfiles">
         <% @dotfiles.each do |dotfile| %>
           <div class="mt-3">
-            <%= render dotfile %>
+            <% if current_user.voted_up_on? dotfile, vote_scope: "bookmark" %>
+              <%= render dotfile %>
+            <% end %>
           </div>
         <% end %>
       </div>

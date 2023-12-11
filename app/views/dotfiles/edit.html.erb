@@ -1,10 +1,1 @@
-<h1>Editing dotfile</h1>
-
-<%= render "form", dotfile: @dotfile %>
-
-<br>
-
-<div>
-  <%= link_to "Show this dotfile", @dotfile %> |
-  <%= link_to "Back to dotfiles", dotfiles_path %>
-</div>
+<%= render "form", dotfile: @dotfile, purpose: "edit" %>

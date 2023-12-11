@@ -11,19 +11,24 @@ class DotfilesController < ApplicationController
     @q = Dotfile.ransack(search_params[:q])
     # dotfiles = @q.result(distinct: true).order(created_at: :asc)  # TODO: add sorting option 
     dotfiles = @q.result(distinct: true).order(cached_weighted_like_score: :desc)
-    @pagy, @dotfiles = pagy(dotfiles, items: 1)
+    @pagy, @dotfiles = pagy(dotfiles, items: 10)
   rescue Pagy::OverflowError
     redirect_to dotfiles_path(page: 1)
   end
 
+  def has_digit?(string)
+    /\\d/.match?(string)
+  end
+
   def bookmark
     @dotfile.bookmark!(current_user)
+    puts "#\n\n\n#{request.fullpath}\n\n"
     respond_to do |format|
       format.html do
         redirect_to @dotfile
       end
       format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(@dotfile, partial: "dotfiles/dotfile", locals: {dotfile: @dotfile})
+        render turbo_stream: turbo_stream.replace(@dotfile, partial: "dotfiles/dotfile", locals: {dotfile: @dotfile, show_config: params[:show_config]})
       end
     end
   end
@@ -42,7 +47,7 @@ class DotfilesController < ApplicationController
         redirect_to @dotfile
       end
       format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(@dotfile, partial: "dotfiles/dotfile", locals: {dotfile: @dotfile})
+        render turbo_stream: turbo_stream.replace(@dotfile, partial: "dotfiles/dotfile", locals: {dotfile: @dotfile, show_config: params[:show_config]})
       end
     end
   end 

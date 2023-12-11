@@ -1,12 +1,13 @@
-<p style="color: green"><%= notice %></p>
+<%= render 'layouts/header' %>
+<div class="container d-flex justify-content-center mt-5" style="width: 100%; weight: 100%">
+  <div style="width: 70%">
+    <% if defined?(notice) && (not notice.nil?) %>
+      <div class="alert alert-success" role="alert">
+        <%= notice %>
+      </div>
+      <br>
+    <% end %>
 
-<%= render @dotfile %>
-
-<div>
-  <% if @dotfile.user == current_user %>
-    <%= link_to "Edit this dotfile", edit_dotfile_path(@dotfile) %>
-    <%= button_to "Destroy this dotfile", @dotfile, method: :delete %>
-  <% end %>
-
-    <%= link_to "Back to dotfiles", dotfiles_path %>
+    <%= render @dotfile, show_config: true %> 
+  </div>
 </div>

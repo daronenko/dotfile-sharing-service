@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <%= link_to 'Dotop', root_path, class: "navbar-brand", style: "font-weight: 600" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
+        <li class="nav-item">
+          <%= link_to "Explore", dotfiles_path, class: "nav-link" %>
+        </li>
+        <% if user_signed_in? %> 
+          <li class="nav-item">
+            <%= link_to "Bookmarks", bookmarks_index_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "New", new_dotfile_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+      <% if user_signed_in? %> 
+        <a class="nav-link dropdown-toggle me-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Profile
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end me-2" aria-labelledby="navbarDropdown">
+          <li><h6 class="dropdown-header">Profile</h6></li>
+          <li><%= link_to "Edit", edit_user_registration_path, class: "dropdown-item" %></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><%= link_to "Log Out", destroy_user_session_path, class: "dropdown-item" %></li>
+        </ul>
+      <% else %>
+        <span class="nav-item">
+          <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
+        </span> 
+      <% end %>
+    </div>
+  </div>
+</nav>

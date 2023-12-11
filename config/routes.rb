@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   end
 
   root 'home#index'
-  get 'home/about'
+  get 'bookmarks/index'
 end

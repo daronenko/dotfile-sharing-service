@@ -1,43 +1,51 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= render 'layouts/header' %>
+<div class="container d-flex justify-content-center" style="width: 100%; weight: 100%">
+  <div style="width: 500px; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+    <div class="card">
+      <h4 class="card-header">Edit Profile</h4>
+      <div class="card-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+          <h5 class="card-title">Change Email</h5>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <div class="mb-3">
+            <input type="email" class="form-control" id="email" name="user[email]" autofocus: true, autocomplete: "email" placeholder="New Email" />
+          </div>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div class="alert alert-warning">
+              Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+            </div>
+          <% end %>
+
+          <br>
+          <h5 class="card-title">Change Password</h5>
+
+          <div class="mb-3">
+            <input type="password" class="form-control" id="password" name="user[password]" autocomplete="new-password" placeholder="New Password" />
+          </div>
+
+          <div class="mb-3">
+            <input type="password" class="form-control" id="password_confirmation" name="user[password_confirmation]" autocomplete="new-password" placeholder="Confirm New Password" />
+          </div>
+
+          <br>
+          <h5 class="card-title">Save Changes*</h5>
+
+          <div class="mb-3">
+            <input type="password" class="form-control" id="current_password" name="user[current_password]" autocomplete="current-password" placeholder="Current Password" />
+          </div>
+
+          <br>
+
+          <div class="d-flex justify-content-center">
+            <%= f.submit "Update", class: "btn btn-primary", style: "width: 100%" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <%= button_to "Delete account", registration_path(resource_name), class: "btn btn-outline-danger mt-3", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</div>

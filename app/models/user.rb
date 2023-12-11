@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
 
-  has_many :dotfiles
+  has_many :dotfiles, dependent: :destroy
 
   attr_accessor :login
 
