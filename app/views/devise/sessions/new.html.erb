@@ -1,29 +1,31 @@
-<div style="width: 300px; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+<div class="d-flex justify-content-center" style="width: 100%; weight: 100%">
   <div style="width: 300px; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-    <h2 class="text-center fs-1">Log In</h2><br>
+    <h2 class="text-center fs-1"><%= t('forms.log_in.title') %></h2><br>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="mb-3">
-        <input type="text" class="form-control" id="login" name="user[login]" autofocus: true placeholder="Username or Email" %>
+     <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="email" name="user[login]" autofocus=true placeholder="name@example.com">
+        <label for="email"><%= t('forms.log_in.email') %></label>
       </div>
 
-      <div class="mb-3">
+      <div class="form-floating mb-3">
         <input type="password" class="form-control" id="password" name="user[password]" autocomplete="current-password" placeholder="Password">
-      </div>
+        <label for="password"><%= t('forms.log_in.password') %></label>
+      </div> 
 
       <% if devise_mapping.rememberable? %>
         <div class="mb-3">
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="remember_me" name="user[remember_me]" value="remember_me">
-            <label class="form-check-label" for="remember_me">Remember me</label>
+            <label class="form-check-label" for="remember_me"><%= t('forms.log_in.remember_me') %></label>
           </div>
         </div>
       <% end %>
 
       <div class="d-flex justify-content-center">
-        <%= f.submit "Log In", class: "btn btn-primary", style: "width: 100%" %>
+        <%= f.submit t('forms.log_in.submit'), class: "btn btn-primary", style: "width: 100%" %>
       </div>
     <% end %>
 

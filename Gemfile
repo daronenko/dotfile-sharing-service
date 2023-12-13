@@ -3,8 +3,11 @@ source "https://rubygems.org"
 ruby "3.2.2"
 
 gem 'sassc-rails'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.1"
+
+gem 'rails-i18n'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -24,7 +27,7 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
+# Build JSON APIs with ease [https://github.com/rils/jbuilder]
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
@@ -48,6 +51,7 @@ gem "bootsnap", require: false
 gem 'activestorage', '~> 7.1', '>= 7.1.1'
 
 gem 'devise', '~> 4.9', '>= 4.9.3'
+gem 'devise-i18n', '~> 1.12.0', ">= 1.12.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -1,28 +1,32 @@
 <div class="d-flex justify-content-center" style="width: 100%; weight: 100%">
   <div style="width: 300px; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-    <h2 class="text-center fs-1">Sign Up</h2><br>
+    <h2 class="text-center fs-1"><%= t('forms.sign_up.title') %></h2><br>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="mb-3">
-        <input type="text" class="form-control fs-6" id="username" name="user[username]" autofocus: true autocomplete="username" placeholder="Username">
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="username" name="user[username]" autofocus=true autocomplete="username" placeholder="Username">
+        <label for="username"><%= t('forms.sign_up.username') %></label>
       </div>
 
-      <div class="mb-3">
-        <input type="email" class="form-control" id="email" name="user[email]" autofocus: true autocomplete="email" placeholder="Email">
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="email" name="user[email]" autocomplete="email" placeholder="name@example.com">
+        <label for="email"><%= t('forms.sign_up.email') %></label>
       </div>
 
-      <div class="mb-3">
+      <div class="form-floating mb-3">
         <input type="password" class="form-control" id="password" name="user[password]" autocomplete="new-password" placeholder="Password">
+        <label for="password"><%= t('forms.sign_up.password') %></label>
       </div>
 
-      <div class="mb-3">
+      <div class="form-floating mb-3">
         <input type="password" class="form-control" id="password_confirmation" name="user[password_confirmation]" autocomplete="new-password" placeholder="Confirm password">
+        <label for="password_confirmation"><%= t('forms.sign_up.confirm_password') %></label>
       </div>
 
       <div class="d-flex justify-content-center">
-        <%= f.submit "Sign Up", class: "btn btn-primary", style: "width: 100%" %>
+        <%= f.submit t('forms.sign_up.submit'), class: "btn btn-primary", style: "width: 100%" %>
       </div>
     <% end %>
     

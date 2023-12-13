@@ -1,70 +1,68 @@
 <%= render 'layouts/header' %>
-<div class="container d-flex justify-content-center" style="width: 100%; weight: 100%">
-  <div style="width: 400px; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
-    <div class="card">
-      <% if defined?(purpose) && purpose == "new" %>
-        <h4 class="card-header">New Dotfile</h4>
-      <% elsif defined?(purpose) && purpose == "edit" %>
-        <h4 class="card-header">Edit Dotfile</h4>
-      <% end %>
-      <div class="card-body">
-        <%= form_with(model: dotfile) do |form| %>
-          <% if dotfile.errors.any? %>
-            <div class="alert alert-danger">
-              <h2><%= pluralize(dotfile.errors.count, "error") %> prohibited this dotfile from being saved:</h2>
+<div class="container justify-content-center mt-5" style="width: 450px">
+  <div class="card">
+    <% if defined?(purpose) && purpose == "new" %>
+      <h4 class="card-header"><%= t('forms.creating_dotfile.title') %></h4>
+    <% elsif defined?(purpose) && purpose == "edit" %>
+      <h4 class="card-header"><%= t('forms.editing_dotfile.title') %></h4>
+    <% end %>
+    <div class="card-body">
+      <%= form_with(model: dotfile) do |form| %>
+        <% if dotfile.errors.any? %>
+          <div class="alert alert-danger">
+            <h2><%= pluralize(dotfile.errors.count, "error") %> prohibited this dotfile from being saved:</h2>
 
-              <ul>
-                <% dotfile.errors.each do |error| %>
-                  <li><%= error.full_message %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-
-          <div class="container">
-            <div class="mb-3">
-              <%= form.label :title, class: "form-label" %>
-              <%= form.text_field :title, class: "form-control" %>
-            </div>
-
-            <div class="mb-3">
-              <%= form.label :description, class: "form-label" %>
-              <%= form.text_area :description, class: "form-control" %>
-            </div>
-
-            <div class="mb-3">
-              <%= form.label :config_type, class: "form-label" %>
-              <%= form.select :config_type, options_for_select([
-                ["", ""],
-                ["tmux", "tmux"],
-                ["nvim", "nvim"],
-                ["fish", "fish"],
-                ["nginx", "nginx"],
-              ], selected: @dotfile.config_type), {}, {class: "form-select form-select"} %>
-            </div>
-
-            <div class="mb-3">
-              <%= form.label :file, class: "form-label" %>
-              <%= form.file_field :file, class: "form-control", type: "file" %>
-            </div>
-
-            <div class="mb-3">
-              <%= form.number_field :user_id, id: :dotfile_user_id, value: current_user.id, type: :hidden %>
-            </div>
-
-            <br>
-
-            <div class="d-flex justify-content-center">
-              <%= form.submit class: "btn btn-primary", style: "width: 100%" %>
-            </div>
+            <ul>
+              <% dotfile.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
           </div>
         <% end %>
-      </div>
+
+        <div class="container">
+          <div class="mb-3">
+            <%= form.label :title, class: "form-label" %>
+            <%= form.text_field :title, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :description, class: "form-label" %>
+            <%= form.text_area :description, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :config_type, class: "form-label" %>
+            <%= form.select :config_type, options_for_select([
+              ["", ""],
+              ["tmux", "tmux"],
+              ["nvim", "nvim"],
+              ["fish", "fish"],
+              ["nginx", "nginx"],
+            ], selected: @dotfile.config_type), {}, {class: "form-select form-select"} %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :file, class: "form-label" %>
+            <%= form.file_field :file, class: "form-control", type: "file" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.number_field :user_id, id: :dotfile_user_id, value: current_user.id, type: :hidden %>
+          </div>
+
+          <br>
+
+          <div class="d-flex justify-content-center">
+            <%= form.submit class: "btn btn-primary", style: "width: 100%" %>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <% if defined?(purpose) && purpose == "edit" %>
-      <div>
-        <%= button_to "Delete", @dotfile, class: "btn btn-outline-danger mt-3", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
-      </div>
-    <% end %>
   </div>
+  <% if defined?(purpose) && purpose == "edit" %>
+    <div>
+      <%= button_to t('forms.editing_dotfile.delete'), @dotfile, class: "btn btn-outline-danger mt-3", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+    </div>
+  <% end %>
 </div>

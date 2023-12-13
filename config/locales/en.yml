@@ -1,31 +1,67 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
+  global:
+    title: "Dotop"
+  activerecord:
+    models:
+      dotfile: "Dotfile"
+    attributes:
+      dotfile:
+        title: "Title"
+        description: "Description"
+        config_type: "Config Type"
+        file: "File"
+  helpers:
+    submit:
+      create: "Create"
+      update: "Apply"
+  header:
+    explore: "Explore"
+    saved: "Saved"
+    create: "Create"
+    log_in: "Log In"
+    profile:
+      title: "Profile"
+      edit: "Edit"
+      log_out: "Log Out"
+  home:
+    index:
+      subtitle: "Share your awesome dotfiles"
+  forms:
+    searching:
+      search: "Search"
+      search_placeholder: "Title, description, author, type"
+      config_type: "Config Type"
+      search_button: "Search"
+    creating_dotfile:
+      title: "Creating"
+    editing_dotfile:
+      title: "Editing"
+      delete: "Delete"
+    creating_user:
+      title: "Creating"
+    editing_user:
+      title: "Editing"
+      change_email: "Change Email"
+      new_email: "New Email"
+      change_password: "Change Password"
+      new_password: "New Password"
+      confirm_new_password: "Confirm New Password"
+      save_changes: "Save Changes"
+      current_password: "Current Password"
+      apply: "Apply"
+      delete: "Delete"
+    sign_up:
+      title: "Sign Up"
+      username: "Username"
+      email: "Email"
+      password: "Password"
+      confirm_password: "Confirm Password"
+      submit: "Sign Up"
+      log_in: "Log In"
+    log_in:
+      title: "Log In"
+      email: "Email"
+      password: "Password"
+      remember_me: "Remember"
+      submit: "Log In"
+      sign_up: "Sign Up"

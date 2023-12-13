@@ -1,16 +1,16 @@
 <%= stylesheet_link_tag('home') %>
 <div class="content">
   <div>
-    <div class="title">Dotop</span><br>
-    <div class="subtitle">Share your awesome dotfiles</span>
+    <div class="title"><%= t('global.title') %></span><br>
+    <div class="subtitle"><%= t('.subtitle') %></span>
   </div>
   <div class="actions">
     <div>
-      <%= link_to "Explore", dotfiles_path, class: "explore-btn btn btn-primary" %>
+      <%= link_to t('header.explore'), dotfiles_path, class: "explore-btn btn btn-primary" %>
       <% if user_signed_in? %>
-        <%= link_to "Log In", dotfiles_path, class: "log-in-btn btn btn-outline-secondary" %>
+        <%= link_to t('header.log_in'), dotfiles_path, class: "log-in-btn btn btn-outline-secondary" %>
       <% else %>
-        <%= link_to "Log In", new_user_session_path, class: "log-in-btn btn btn-outline-secondary" %>
+        <%= link_to t('header.log_in'), new_user_session_path, class: "log-in-btn btn btn-outline-secondary" %>
       <% end %>
     </div>
   </div>

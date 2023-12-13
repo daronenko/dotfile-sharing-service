@@ -1,7 +1,7 @@
 <%= render 'layouts/header' %>
 <div class="container d-flex justify-content-center mt-5" style="width: 100%; weight: 100%">
   <div style="width: 70%">
-      <h1>Bookmarks</h1><br>
+      <h1><%= t('header.saved') %></h1><br>
       
       <% if defined?(notice) && (not notice.nil?) %>
         <div class="alert alert-success" role="alert">
@@ -13,16 +13,16 @@
       <div class="form-inline">
         <%= search_form_for @q do |f| %>
           <div>
-            <%= f.label :title_or_description_or_config_type_or_user_username_cont, 'Search', class: 'sr-only' %>
+            <%= f.label :title_or_description_or_config_type_or_user_username_cont, t('forms.searching.search'), class: 'sr-only' %>
             <%= f.search_field :title_or_description_or_config_type_or_user_username_cont,
               class: 'form-control',
               autofocus: true,
               autocomplete: 'off',
-              placeholder: 'Search for Bookmarks' %>
+              placeholder: t('forms.searching.search_placeholder') %>
           </div>
 
           <div class="mt-3">
-            <%= f.label :config_type_eq, 'Config Type', class: 'sr-only' %>
+            <%= f.label :config_type_eq, t('forms.searching.config_type'), class: 'sr-only' %>
             <%= f.select :config_type_eq,
               Dotfile.pluck(:config_type).uniq,
               { include_blank: true },
@@ -32,7 +32,7 @@
             %>
           </div>
 
-          <%= f.submit 'Search', class: 'btn btn-primary mt-3' %>
+          <%= f.submit t('forms.searching.search_button'), class: 'btn btn-primary mt-3' %>
         <% end %>
       </div>
 

@@ -1,16 +1,16 @@
 <%= render 'layouts/header' %>
-<div class="container d-flex justify-content-center" style="width: 100%; weight: 100%">
-  <div style="width: 500px; margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%)">
+<div class="container justify-content-center mt-5" style="width: 450px">
     <div class="card">
-      <h4 class="card-header">Edit Profile</h4>
+      <h4 class="card-header"><%= t('forms.editing_user.title') %></h4>
       <div class="card-body">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
-          <h5 class="card-title">Change Email</h5>
+          <h5 class="card-title"><%= t('forms.editing_user.change_email') %></h5>
 
-          <div class="mb-3">
-            <input type="email" class="form-control" id="email" name="user[email]" autofocus: true, autocomplete: "email" placeholder="New Email" />
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" name="user[email]" autocomplete="email" placeholder="name@example.com">
+            <label for="email"><%= t('forms.editing_user.new_email') %></label>
           </div>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -20,32 +20,34 @@
           <% end %>
 
           <br>
-          <h5 class="card-title">Change Password</h5>
+          <h5 class="card-title"><%= t('forms.editing_user.change_password') %></h5>
 
-          <div class="mb-3">
-            <input type="password" class="form-control" id="password" name="user[password]" autocomplete="new-password" placeholder="New Password" />
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="password" name="user[password]" autocomplete="new-password" placeholder="Password">
+            <label for="password"><%= t('forms.editing_user.new_password') %></label>
           </div>
 
-          <div class="mb-3">
-            <input type="password" class="form-control" id="password_confirmation" name="user[password_confirmation]" autocomplete="new-password" placeholder="Confirm New Password" />
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="password_confirmation" name="user[password_confirmation]" autocomplete="new-password" placeholder="Confirm password">
+            <label for="password_confirmation"><%= t('forms.editing_user.confirm_new_password') %></label>
           </div>
 
           <br>
-          <h5 class="card-title">Save Changes*</h5>
+          <h5 class="card-title"><%= t('forms.editing_user.save_changes') %>*</h5>
 
-          <div class="mb-3">
-            <input type="password" class="form-control" id="current_password" name="user[current_password]" autocomplete="current-password" placeholder="Current Password" />
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="current_password" name="user[current_password]" autocomplete="current-password" placeholder="Current password">
+            <label for="current_password"><%= t('forms.editing_user.current_password') %></label>
           </div>
 
           <br>
 
           <div class="d-flex justify-content-center">
-            <%= f.submit "Update", class: "btn btn-primary", style: "width: 100%" %>
+            <%= f.submit t('forms.editing_user.apply'), class: "btn btn-primary", style: "width: 100%" %>
           </div>
         <% end %>
       </div>
     </div>
 
-    <%= button_to "Delete account", registration_path(resource_name), class: "btn btn-outline-danger mt-3", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
-  </div>
+  <%= button_to t('forms.editing_user.delete'), registration_path(resource_name), class: "btn btn-outline-danger mt-3", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
 </div>

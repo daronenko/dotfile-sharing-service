@@ -1,0 +1,67 @@
+ru:
+  global:
+    title: "Dotop"
+  activerecord:
+    models:
+      dotfile: "Конфиг"
+    attributes:
+      dotfile:
+        title: "Название"
+        description: "Описание"
+        config_type: "Тип Конфига"
+        file: "Файл"
+  helpers:
+    submit:
+      create: "Создать"
+      update: "Применить"
+  header:
+    explore: "Поиск"
+    saved: "Сохраненные"
+    create: "Создать"
+    log_in: "Войти"
+    profile:
+      title: "Профиль"
+      edit: "Редактировать"
+      log_out: "Выйти"
+  home:
+    index:
+      subtitle: "Делитесь ваши потрясающими конфигами"
+  forms:
+    searching:
+      search: "Поиск"
+      search_placeholder: "Название, описание, автор, тип"
+      config_type: "Тип Конфига"
+      search_button: "Искать"
+    creating_dotfile:
+      title: "Создание"
+    editing_dotfile:
+      title: "Редактирование"
+      delete: "Удалить"
+    creating_user:
+      title: "Создание"
+    editing_user:
+      title: "Редактирование"
+      change_email: "Изменить почту"
+      new_email: "Новая почта"
+      change_password: "Изменить пароль"
+      new_password: "Новый пароль"
+      confirm_new_password: "Повторите новый пароль"
+      save_changes: "Сохранить изменения"
+      current_password: "Текущий пароль"
+      apply: "Применить"
+      delete: "Удалить"
+    sign_up:
+      title: "Регистрация"
+      username: "Имя пользователя"
+      email: "Email"
+      password: "Пароль"
+      confirm_password: "Повторите пароль"
+      submit: "Зарегистрироваться"
+      log_in: "Вход"
+    log_in:
+      title: "Вход"
+      email: "Email"
+      password: "Пароль"
+      remember_me: "Запомнить"
+      submit: "Войти"
+      sign_up: "Зарегистрироваться"
