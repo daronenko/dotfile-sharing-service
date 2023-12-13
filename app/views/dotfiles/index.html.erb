@@ -11,7 +11,7 @@
       <% end %>
       
       <div class="form-inline">
-        <%= search_form_for @q do |f| %>
+        <%= search_form_for @q, url: dotfiles_path do |f| %>
           <div>
             <%= f.label :title_or_description_or_config_type_or_user_username_cont, t('forms.searching.search'), class: 'sr-only' %>
             <%= f.search_field :title_or_description_or_config_type_or_user_username_cont,
@@ -46,9 +46,9 @@
         <% end %>
       </div>
 
-      <% if @pagy.count > @pagy.items %>
+      <% if @dotfiles_pagy.count > @dotfiles_pagy.items %>
         <div class="d-flex justify-content-center mt-5" style="width: 100%; weight: 100%">
-          <%== pagy_bootstrap_nav(@pagy) %>
+          <%== pagy_bootstrap_nav(@dotfiles_pagy) %>
         </div>
       <% end %> 
   </div>
