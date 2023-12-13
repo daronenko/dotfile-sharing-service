@@ -16,10 +16,6 @@ class DotfilesController < ApplicationController
     redirect_to dotfiles_path(page: 1)
   end
 
-  def has_digit?(string)
-    /\\d/.match?(string)
-  end
-
   def bookmark
     @dotfile.bookmark!(current_user)
     puts "#\n\n\n#{request.fullpath}\n\n"
