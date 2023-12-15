@@ -22,6 +22,7 @@ ru:
     log_in: "Войти"
     profile:
       title: "Профиль"
+      show: "Профиль"
       edit: "Редактировать"
       log_out: "Выйти"
   home:
@@ -66,3 +67,7 @@ ru:
       remember_me: "Запомнить"
       submit: "Войти"
       sign_up: "Зарегистрироваться"
+    user:
+      username: "Имя пользователя"
+      email: "Почта"
+      edit: "Изменить"

@@ -27,7 +27,7 @@
           <%= t('header.profile.title') %>
         </a>
         <ul class="dropdown-menu dropdown-menu-end me-2" aria-labelledby="navbarDropdown">
-          <li><h6 class="dropdown-header"><%= t('header.profile.title') %></h6></li>
+          <li><%= link_to t('header.profile.show'), current_user, class: "dropdown-item" %></li>
           <li><%= link_to t('header.profile.edit'), edit_user_registration_path, class: "dropdown-item" %></li>
           <li><hr class="dropdown-divider"></li>
           <li><%= link_to t('header.profile.log_out'), destroy_user_session_path, class: "dropdown-item" %></li>

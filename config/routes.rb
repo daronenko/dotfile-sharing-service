@@ -17,5 +17,7 @@ scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
 
     root 'home#index'
     get 'bookmarks/index'
+
+    resources :users, only: [:show]
   end
 end

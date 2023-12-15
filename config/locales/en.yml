@@ -22,6 +22,7 @@ en:
     log_in: "Log In"
     profile:
       title: "Profile"
+      show: "Profile"
       edit: "Edit"
       log_out: "Log Out"
   home:
@@ -66,3 +67,7 @@ en:
       remember_me: "Remember"
       submit: "Log In"
       sign_up: "Sign Up"
+    user:
+      username: "Username"
+      email: "Email"
+      edit: "Edit"

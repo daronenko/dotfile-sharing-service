@@ -2,7 +2,7 @@
   <div class="card-header">
     <div>
       <div style="display: inline-block; width: 49.5%">
-        <%= link_to "#{dotfile.title}", dotfile, class: "text-decoration-none fw-bold fs-4" %> <span style="margin-left: 5px">@<%= dotfile.user.username %></span>
+        <%= link_to "#{dotfile.title}", dotfile, class: "text-decoration-none fw-bold fs-4" %> <span style="margin-left: 5px"><%= link_to "@#{dotfile.user.username}", dotfile.user, class: "text-decoration-none text-secondary" %></span>
       </div>
       <div style="display: inline-block; text-align: right; width: 49.5%; color: grey">
         <%= dotfile.config_type %>
@@ -32,5 +32,3 @@
     <% end %> 
   </div>
 </div>
-
-
