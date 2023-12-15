@@ -1,6 +1,6 @@
 <%= render 'layouts/header' %>
 <div class="container justify-content-center mt-5" style="width: 450px; min-height: 100vh">
-  <div class="card">
+  <div class="card shadow-sm">
     <% if defined?(purpose) && purpose == "new" %>
       <h4 class="card-header"><%= t('forms.creating_dotfile.title') %></h4>
     <% elsif defined?(purpose) && purpose == "edit" %>
@@ -54,7 +54,7 @@
           <br>
 
           <div class="d-flex justify-content-center">
-            <%= form.submit class: "btn btn-primary", style: "width: 100%" %>
+            <%= form.submit class: "btn btn-primary shadow-sm", style: "width: 100%" %>
           </div>
         </div>
       <% end %>

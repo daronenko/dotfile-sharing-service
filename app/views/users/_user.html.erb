@@ -1,4 +1,4 @@
-<div id="<%= dom_id user %>" class="card">
+<div id="<%= dom_id user %>" class="card shadow-sm">
   <div class="card-header">
     <%= link_to "@#{user.username}", user, class: "text-decoration-none fw-bold fs-4 text-secondary" %>
   </div>
@@ -11,6 +11,6 @@
 </div>
 <% if @user == current_user %>
   <div>
-    <%= link_to t('forms.user.edit'), edit_user_registration_path, class: "btn btn-secondary mt-3" %>
+    <%= link_to t('forms.user.edit'), edit_user_registration_path, class: "btn btn-secondary mt-3 shadow-sm" %>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 <%= render 'layouts/header' %>
 <div class="container justify-content-center mt-5" style="width: 450px; min-height: 100vh">
-    <div class="card">
+    <div class="card shadow-sm">
       <h4 class="card-header"><%= t('forms.editing_user.title') %></h4>
       <div class="card-body">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -43,7 +43,7 @@
           <br>
 
           <div class="d-flex justify-content-center">
-            <%= f.submit t('forms.editing_user.apply'), class: "btn btn-primary", style: "width: 100%" %>
+            <%= f.submit t('forms.editing_user.apply'), class: "btn btn-primary shadow-sm", style: "width: 100%" %>
           </div>
         <% end %>
       </div>
