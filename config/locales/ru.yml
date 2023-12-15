@@ -1,6 +1,7 @@
 ru:
   global:
     title: "Dotop"
+    copyright: "© 2023 Даниил Мироненко"
   activerecord:
     models:
       dotfile: "Конфиг"

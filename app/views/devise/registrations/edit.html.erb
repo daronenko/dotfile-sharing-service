@@ -1,5 +1,5 @@
 <%= render 'layouts/header' %>
-<div class="container justify-content-center mt-5" style="width: 450px">
+<div class="container justify-content-center mt-5" style="width: 450px; min-height: 100vh">
     <div class="card">
       <h4 class="card-header"><%= t('forms.editing_user.title') %></h4>
       <div class="card-body">
@@ -51,3 +51,4 @@
 
   <%= button_to t('forms.editing_user.delete'), registration_path(resource_name), class: "btn btn-outline-danger mt-3", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
 </div>
+<%= render 'layouts/footer' %>

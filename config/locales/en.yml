@@ -1,6 +1,7 @@
 en:
   global:
     title: "Dotop"
+    copyright: "© 2023 Daniil Mironenko"
   activerecord:
     models:
       dotfile: "Dotfile"

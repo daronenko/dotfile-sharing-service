@@ -1,5 +1,5 @@
 <%= render 'layouts/header' %>
-<div class="container justify-content-center mt-5" style="width: 450px">
+<div class="container justify-content-center mt-5" style="width: 450px; min-height: 100vh">
   <div class="card">
     <% if defined?(purpose) && purpose == "new" %>
       <h4 class="card-header"><%= t('forms.creating_dotfile.title') %></h4>
@@ -66,3 +66,4 @@
     </div>
   <% end %>
 </div>
+<%= render 'layouts/footer' %>
