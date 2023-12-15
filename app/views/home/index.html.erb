@@ -1,12 +1,12 @@
 <%= stylesheet_link_tag('home') %>
 <div class="content">
-  <div>
-    <div class="title"><%= t('global.title') %></span><br>
-    <div class="subtitle"><%= t('.subtitle') %></span>
+  <div class="header">
+    <div class="title"><%= t('global.title') %></div><br>
+    <div class="subtitle"><%= t('.subtitle') %></div>
   </div>
   <div class="actions">
     <div>
-      <%= link_to t('header.explore'), dotfiles_path, class: "explore-btn btn btn-primary" %>
+      <%= link_to t('header.explore'), dotfiles_path, class: "explore-btn btn btn-primary shadow" %>
       <% if user_signed_in? %>
         <%= link_to t('header.log_in'), dotfiles_path, class: "log-in-btn btn btn-outline-secondary" %>
       <% else %>

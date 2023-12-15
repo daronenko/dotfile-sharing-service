@@ -6,6 +6,11 @@
     transform: translate(-50%, -50%);
 }
 
+.header {
+    width: 400px;
+    margin-left: 100px;
+}
+
 .title {
     font-size: 100px;
     font-weight: 700;
@@ -15,20 +20,16 @@
     font-size: 24px;
     font-weight: 500;
     color: grey;
-    margin-top: -23px;
+    margin-top: -40px;
 }
 
 .actions {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: -30px;
-}
-
-.explore-btn {
-    margin-right: -5px;
+    margin-top: 35px;
 }
 
 .log-in-btn {
-    margin-left: -5px;
+    margin-left: 10px;
 }
