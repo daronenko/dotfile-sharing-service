@@ -10,8 +10,6 @@
       <%= form_with(model: dotfile) do |form| %>
         <% if dotfile.errors.any? %>
           <div class="alert alert-danger">
-            <h2><%= pluralize(dotfile.errors.count, "error") %> prohibited this dotfile from being saved:</h2>
-
             <ul>
               <% dotfile.errors.each do |error| %>
                 <li><%= error.full_message %></li>
