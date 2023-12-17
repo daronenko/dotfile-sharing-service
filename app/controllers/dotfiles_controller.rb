@@ -7,18 +7,25 @@ class DotfilesController < ApplicationController
 
   # GET /dotfiles or /dotfiles.json
   def index
-    search_params = params.permit(:format, :page, q: [:title_or_description_or_config_type_or_user_username_cont, :config_type_eq])
+    search_params = params.permit(:format, :page, :commit, :locale, q: [:title_or_description_or_config_type_or_user_username_cont, :config_type_eq, :s])
     @q = Dotfile.ransack(search_params[:q])
-    # dotfiles = @q.result(distinct: true).order(created_at: :asc)  # TODO: add sorting option 
-    dotfiles = @q.result(distinct: true).order(cached_weighted_like_score: :desc)
-    @dotfiles_pagy, @dotfiles = pagy(dotfiles, items: 1)
+
+    if !search_params[:q].nil? && !search_params[:q][:s].nil?
+      order_by = search_params[:q][:s].split[0]
+      order_by = (order_by == 'created_at') ? :created_at : :cached_weighted_like_score
+    else
+      order_by = :cached_weighted_like_score
+    end
+
+    dotfiles = @q.result(distinct: true).order(order_by => :desc)
+
+    @dotfiles_pagy, @dotfiles = pagy(dotfiles, items: 10)
   rescue Pagy::OverflowError
     redirect_to dotfiles_path(page: 1)
   end
 
   def bookmark
     @dotfile.bookmark!(current_user)
-    puts "#\n\n\n#{request.fullpath}\n\n"
     respond_to do |format|
       format.html do
         redirect_to @dotfile

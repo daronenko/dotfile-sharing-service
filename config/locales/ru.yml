@@ -33,6 +33,9 @@ ru:
       search: "Поиск"
       search_placeholder: "Название, описание, автор, тип"
       config_type: "Тип Конфига"
+      order_by: "Сортировать"
+      votes: "Голоса"
+      recent: "Недавние"
       search_button: "Искать"
     creating_dotfile:
       title: "Создание"

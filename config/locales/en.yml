@@ -33,6 +33,9 @@ en:
       search: "Search"
       search_placeholder: "Title, description, author, type"
       config_type: "Config Type"
+      order_by: "Order"
+      votes: "Votes"
+      recent: "Recent"
       search_button: "Search"
     creating_dotfile:
       title: "Creating"

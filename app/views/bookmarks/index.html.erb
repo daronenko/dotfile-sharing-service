@@ -32,7 +32,16 @@
             %>
           </div>
 
-          <%= f.submit t('forms.searching.search_button'), class: 'btn btn-primary mt-3' %>
+          <div>
+            <div style="display: inline-block; width: 49.5%">
+              <%= f.submit t('forms.searching.search_button'), class: 'btn btn-primary mt-3 shadow-sm' %>
+            </div>
+            <div style="display: inline-block; text-align: right; width: 49.5%">
+              <%= t('forms.searching.order_by') %>:
+              <%= sort_link(@q, :cached_weighted_like_score, t('forms.searching.votes'), default_order: :desc, hide_indicator: true, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover", style: "margin-left: 10px") %>
+              <%= sort_link(@q, :created_at, t('forms.searching.recent'), default_order: :desc, hide_indicator: true, class: "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover", style: "margin-left: 10px") %>
+            </div>
+          </div>
         <% end %>
       </div>
 
