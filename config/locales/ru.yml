@@ -73,3 +73,8 @@ ru:
       edit: "Изменить"
   errors:
     invalid_extension: "имеет недопустимое расширение"
+  notices:
+    create_dotfile: "Конфиг был успешно создан."
+    update_dotfile: "Конфиг был успешно изменен."
+    destroy_dotfile: "Конфиг был успешно удален."
+    not_authorized_to_edit: "Вы не авторизованы для редактирования этого."

@@ -73,3 +73,9 @@ en:
       edit: "Edit"
   errors:
     invalid_extension: "has invalid extension"
+  notices:
+    create_dotfile: "Dotfile was successfully created."
+    update_dotfile: "Dotfile was successfully updated."
+    destroy_dotfile: "Dotfile was successfully destroyed."
+    not_authorized_to_edit: "Not authorized to edit this."
+

@@ -67,7 +67,7 @@ class DotfilesController < ApplicationController
 
     respond_to do |format|
       if @dotfile.save
-        format.html { redirect_to dotfile_url(@dotfile), notice: "Dotfile was successfully created." }
+        format.html { redirect_to dotfile_url(@dotfile), notice: I18n.t('notices.create_dotfile') }
         format.json { render :show, status: :created, location: @dotfile }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -80,7 +80,7 @@ class DotfilesController < ApplicationController
   def update
     respond_to do |format|
       if @dotfile.update(dotfile_params)
-        format.html { redirect_to dotfile_url(@dotfile), notice: "Dotfile was successfully updated." }
+        format.html { redirect_to dotfile_url(@dotfile), notice: I18n.t('notices.update_dotfile') }
         format.json { render :show, status: :ok, location: @dotfile }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -94,14 +94,14 @@ class DotfilesController < ApplicationController
     @dotfile.destroy!
 
     respond_to do |format|
-      format.html { redirect_to dotfiles_url, notice: "Dotfile was successfully destroyed." }
+      format.html { redirect_to dotfiles_url, notice: I18n.t('notices.destroy_dotfile') }
       format.json { head :no_content }
     end
   end
 
   def correct_user
     @dotfile = current_user.dotfiles.find_by(id: params[:id])
-    redirect_to dotfiles_path, notice: "Not Authorized To Edit This Friend" if @dotfile.nil?
+    redirect_to dotfiles_path, notice: I18n.t('notices.not_authorized_to_edit') if @dotfile.nil?
   end
  
   private
