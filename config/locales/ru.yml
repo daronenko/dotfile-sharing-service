@@ -71,3 +71,5 @@ ru:
       username: "Имя пользователя"
       email: "Почта"
       edit: "Изменить"
+  errors:
+    invalid_extension: "имеет недопустимое расширение"

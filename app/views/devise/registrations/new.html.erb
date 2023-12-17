@@ -6,22 +6,22 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="username" name="user[username]" autofocus=true autocomplete="username" placeholder="Username">
+        <input type="text" class="form-control" id="username" name="user[username]" autofocus=true autocomplete="username" placeholder="Username" required>
         <label for="username"><%= t('forms.sign_up.username') %></label>
       </div>
 
       <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="email" name="user[email]" autocomplete="email" placeholder="name@example.com">
+        <input type="email" class="form-control" id="email" name="user[email]" autocomplete="email" placeholder="name@example.com" required>
         <label for="email"><%= t('forms.sign_up.email') %></label>
       </div>
 
       <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="password" name="user[password]" autocomplete="new-password" placeholder="Password">
+        <input type="password" class="form-control" id="password" name="user[password]" autocomplete="new-password" placeholder="Password" required>
         <label for="password"><%= t('forms.sign_up.password') %></label>
       </div>
 
       <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="password_confirmation" name="user[password_confirmation]" autocomplete="new-password" placeholder="Confirm password">
+        <input type="password" class="form-control" id="password_confirmation" name="user[password_confirmation]" autocomplete="new-password" placeholder="Confirm password" required>
         <label for="password_confirmation"><%= t('forms.sign_up.confirm_password') %></label>
       </div>
 

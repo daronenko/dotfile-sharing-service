@@ -21,12 +21,12 @@
         <div class="container">
           <div class="mb-3">
             <%= form.label :title, class: "form-label" %>
-            <%= form.text_field :title, class: "form-control" %>
+            <%= form.text_field :title, class: "form-control", required: true %>
           </div>
 
           <div class="mb-3">
             <%= form.label :description, class: "form-label" %>
-            <%= form.text_area :description, class: "form-control" %>
+            <%= form.text_area :description, class: "form-control", required: true %>
           </div>
 
           <div class="mb-3">
@@ -37,7 +37,7 @@
               ["nvim", "nvim"],
               ["fish", "fish"],
               ["nginx", "nginx"],
-            ], selected: @dotfile.config_type), {}, {class: "form-select form-select"} %>
+            ], selected: @dotfile.config_type), {}, {class: "form-select form-select", required: true} %>
           </div>
 
           <div class="mb-3">

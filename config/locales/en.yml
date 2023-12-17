@@ -71,3 +71,5 @@ en:
       username: "Username"
       email: "Email"
       edit: "Edit"
+  errors:
+    invalid_extension: "has invalid extension"

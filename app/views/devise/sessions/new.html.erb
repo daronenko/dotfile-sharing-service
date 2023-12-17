@@ -6,12 +6,12 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
      <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="email" name="user[login]" autofocus=true placeholder="name@example.com">
+        <input type="email" class="form-control" id="email" name="user[login]" autofocus=true placeholder="name@example.com" required>
         <label for="email"><%= t('forms.log_in.email') %></label>
       </div>
 
       <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="password" name="user[password]" autocomplete="current-password" placeholder="Password">
+        <input type="password" class="form-control" id="password" name="user[password]" autocomplete="current-password" placeholder="Password" required>
         <label for="password"><%= t('forms.log_in.password') %></label>
       </div> 
 
