@@ -21,12 +21,12 @@
         <div class="container">
           <div class="mb-3">
             <%= form.label :title, class: "form-label" %>
-            <%= form.text_field :title, class: "form-control", required: true %>
+            <%= form.text_field :title, class: "form-control", id: "title", required: true %>
           </div>
 
           <div class="mb-3">
             <%= form.label :description, class: "form-label" %>
-            <%= form.text_area :description, class: "form-control", required: true %>
+            <%= form.text_area :description, class: "form-control", id: "description", required: true %>
           </div>
 
           <div class="mb-3">
@@ -36,12 +36,12 @@
               ["nvim", "nvim"],
               ["fish", "fish"],
               ["nginx", "nginx"],
-            ], selected: @dotfile.config_type), {}, {class: "form-select form-select", required: true} %>
+            ], selected: @dotfile.config_type), {}, {class: "form-select form-select", id: "config_type", required: true} %>
           </div>
 
           <div class="mb-3">
             <%= form.label :file, class: "form-label" %>
-            <%= form.file_field :file, class: "form-control", type: "file" %>
+            <%= form.file_field :file, class: "form-control", id: "file", type: "file" %>
           </div>
 
           <div class="mb-3">
@@ -51,7 +51,7 @@
           <br>
 
           <div class="d-flex justify-content-center">
-            <%= form.submit class: "btn btn-primary shadow-sm", style: "width: 100%" %>
+            <%= form.submit class: "btn btn-primary shadow-sm", style: "width: 100%", id: "create_button" %>
           </div>
         </div>
       <% end %>

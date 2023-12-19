@@ -2,7 +2,11 @@ class Dotfile < ApplicationRecord
   has_one_attached :file
   belongs_to :user
 
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :config_type, presence: true
   validates :file, presence: true
+
   validate :allowed_file_extension
   
   acts_as_votable
