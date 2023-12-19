@@ -19,7 +19,7 @@ class DotfilesController < ApplicationController
 
     dotfiles = @q.result(distinct: true).order(order_by => :desc)
 
-    @dotfiles_pagy, @dotfiles = pagy(dotfiles, items: 10)
+    @dotfiles_pagy, @dotfiles = pagy(dotfiles, items: 2)
   rescue Pagy::OverflowError
     redirect_to dotfiles_path(page: 1)
   end
