@@ -4,7 +4,6 @@
     <li class="nav-item"><%= link_to t('header.explore'), dotfiles_path, class: "nav-link px-2 text-muted" %></li>
     <% if user_signed_in? %> 
       <li class="nav-item"><%= link_to t('header.saved'), bookmarks_index_path, class: "nav-link px-2 text-muted" %></li>
-      <li class="nav-item"><%= link_to t('header.create'), new_dotfile_path, class: "nav-link px-2 text-muted" %></li>
     <% end %>
   </ul>
   <p class="text-center text-muted"><%= t('global.copyright') %></p>
