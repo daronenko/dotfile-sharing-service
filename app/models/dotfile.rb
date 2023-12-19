@@ -2,9 +2,9 @@ class Dotfile < ApplicationRecord
   has_one_attached :file
   belongs_to :user
 
-  validates :title, presence: true
-  validates :description, presence: true
-  validates :config_type, presence: true
+  validates :title, presence: true, format: { with: /\A[a-zA-Z0-9_.\s]+\Z/ }
+  validates :description, presence: true, format: { with: /\A[a-zA-Z0-9_.\s]+\Z/ }
+  validates :config_type, presence: true, format: { with: /\A[a-zA-Z_.\s]+\Z/ }
   validates :file, presence: true
 
   validate :allowed_file_extension
