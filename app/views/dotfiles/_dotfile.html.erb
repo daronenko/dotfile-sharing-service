@@ -28,7 +28,12 @@
 
     <% if defined?(show_config) && show_config %>
       <br>
-      <pre class="prettyprint form-control" style="background-color: #f8f8f8; border: 1px solid #d3d3d3; padding: 10px; font-size: 14px"><code class="lang-sh" style=""><%= raw(dotfile.file.download) %></code></pre>
-    <% end %> 
+      <button id="hide-button" class="btn btn-outline-secondary btn-sm">Hide</button>
+      <div id="hide-target">
+        <br>
+        <pre class="prettyprint form-control" style="background-color: #f8f8f8; border: 1px solid #d3d3d3; padding: 10px; font-size: 14px"><code class="lang-sh" style=""><%= raw(dotfile.file.download) %></code></pre> 
+      </div>
+    <% end %>
   </div>
 </div>
+<%= javascript_include_tag 'hide_dotfile' %>
